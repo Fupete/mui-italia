@@ -6,13 +6,11 @@
     "lib": [
       "es6",
       "dom",
-      "es2019"
+      "es2019",
+      "ESNext"
     ],
     "jsx": "react-jsx",
-    "noEmit": false,
-    "declaration": true,
     "strict": true,
-    "noImplicitAny": true,
     "sourceMap": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
@@ -34,11 +32,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "__mocks__",
     "dist",
     "node_modules",
-    "**/__tests__/*",
-    "Dangerfile.ts",
-    "src/**/__tests__/*"
   ]
 }
