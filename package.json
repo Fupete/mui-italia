@@ -1,16 +1,24 @@
 {
   "name": "@pagopa/mui-italia",
   "version": "0.4.3",
+  "author": "PagoPA",
   "license": "MIT",
   "private": false,
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/pagopa/mui-italia/issues"
+  },
   "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@fontsource/titillium-web": "^4.5.0",
-    "@mui/material": "^5.0.4",
-    "@mui/system": "^5.4.0"
+    "@mui/material": "^5.4.1",
+    "@mui/system": "^5.4.1"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -31,9 +39,10 @@
       "not op_mini all"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 2 Chrome versions",
+      "last 2 Firefox versions",
+      "last 2 Safari versions",
+      "last 2 Edge versions"
     ]
   },
   "devDependencies": {
@@ -61,8 +70,17 @@
     "typescript": "^4.5.5"
   },
   "peerDependencies": {
-    "react": "^17.0",
-    "react-dom": "^17.0"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
+  "keywords": [
+    "design-system",
+    "components",
+    "react",
+    "mui"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.x"
   }
 }
