@@ -2,7 +2,7 @@ import { createTheme, Theme } from "@mui/material/styles";
 import { createBreakpoints } from '@mui/system';
 
 /* Design Tokens */
-import italia from "./colors/italia";
+import { italia } from "./colors";
 
 /* Typefaces */
 import "@fontsource/titillium-web/300.css";
@@ -58,7 +58,7 @@ declare module '@mui/material/Button' {
   }
 }
 
-const theme: Theme = createTheme({
+export const theme: Theme = createTheme({
   palette: {
     mode: "light",
     background: {
@@ -369,7 +369,3 @@ const theme: Theme = createTheme({
   },
   spacing: 8,
 });
-
-
-
-export default theme;
