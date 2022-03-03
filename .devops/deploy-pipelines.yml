@@ -103,10 +103,11 @@ stages:
         steps:
           - task: Npm@1
             inputs: 
-            command: custom
-            customCommand: publish --access public
-            customEndpoint: $(NPM_CONNECTION)
-            verbose: true
+              command: custom
+              customCommand: publish --access public
+              customEndpoint: $(NPM_CONNECTION)
+              verbose: true
+              workingDir: '$(Pipeline.Workspace)/Bundle'
 
   # Publish
   # - stage: Publish
