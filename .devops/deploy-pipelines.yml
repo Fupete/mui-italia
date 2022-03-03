@@ -113,14 +113,14 @@ stages:
     jobs:
       - job: publish
         steps:
+          - checkout: none
+
+          - download: current
+            artifact: Bundle
+
           - script: |
               ls -a
             displayName: 'List all the files'
-
-          # - checkout: none
-
-          # - download: current
-          #  artifact: Bundle
 
           # - task: Npm@1
           #  inputs: 
