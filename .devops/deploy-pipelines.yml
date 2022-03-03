@@ -112,16 +112,19 @@ stages:
       - Prepare_artifact
     jobs:
       - job: publish
-        steps:   
-          - checkout: none
+        steps:
+          - script: |
+                ls -a
+              displayName: 'List all the files'
+          # - checkout: none
 
-          - download: current
-            artifact: Bundle
+          # - download: current
+          #  artifact: Bundle
 
-          - task: Npm@1
-            inputs: 
-              command: custom
-              customCommand: publish --access public
-              customEndpoint: $(NPM_CONNECTION)
-              verbose: true
-              workingDir: '$(Pipeline.Workspace)/Bundle'
+          # - task: Npm@1
+          #  inputs: 
+          #    command: custom
+          #    customCommand: publish --access public
+          #    customEndpoint: $(NPM_CONNECTION)
+          #    verbose: true
+          #    workingDir: '$(Pipeline.Workspace)/Bundle'
