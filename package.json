@@ -1,11 +1,17 @@
 {
-  "name": "@dmnplb/mui-italia",
-  "version": "0.4.7",
+  "name": "@damianop/mui-italia",
   "author": "PagoPA",
   "license": "MIT",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "bugs": {
     "url": "https://github.com/pagopa/mui-italia/issues"
   },

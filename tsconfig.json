@@ -38,6 +38,7 @@
     "node_modules",
     "**/__tests__/*",
     "Dangerfile.ts",
-    "src/**/__tests__/*"
+    "src/**/__tests__/*",
+    "**/*.stories.tsx"
   ]
 }
