@@ -113,8 +113,6 @@ stages:
     jobs:
       - job: publish
         steps:
-          - checkout: none
-
           - download: current
             artifact: Bundle
 
