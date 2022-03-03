@@ -114,8 +114,9 @@ stages:
       - job: publish
         steps:
           - script: |
-                ls -a
-              displayName: 'List all the files'
+              ls -a
+            displayName: 'List all the files'
+
           # - checkout: none
 
           # - download: current
