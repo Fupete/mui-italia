@@ -1,15 +1,11 @@
 {
-  "name": "@pagopa/mui-italia",
-  "version": "0.5.1",
+  "name": "@dmnplb/mui-italia",
+  "version": "0.4.3",
   "author": "PagoPA",
   "license": "MIT",
   "private": false,
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "bugs": {
     "url": "https://github.com/pagopa/mui-italia/issues"
   },
