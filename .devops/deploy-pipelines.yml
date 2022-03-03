@@ -76,7 +76,7 @@ stages:
             displayName: 'Skip release bundle'
 
   # Prepare Artifact
-  - stage: Build & Publish
+  - stage: Build_Publish
     dependsOn:
       - Release
     jobs:
