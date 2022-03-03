@@ -76,7 +76,7 @@ stages:
             displayName: 'Skip release bundle'
 
   # Prepare Artifact
-  - stage: Prepare_artifact
+  - stage: Build & Publish
     dependsOn:
       - Release
     jobs:
@@ -92,40 +92,36 @@ stages:
               gitReference: $(gitReference)
 
           - script: |
-              yarn generate && yarn cpfiles
+              yarn build
             displayName: 'Build'
 
-          - task: CopyFiles@2
-            inputs:
-              SourceFolder: '$(System.DefaultWorkingDirectory)/dist'
-              TargetFolder: '$(System.DefaultWorkingDirectory)/bundle'
-              Contents: |
-                **/*
-            displayName: 'Copy bundle files'
-          
-          - publish: $(System.DefaultWorkingDirectory)/bundle
-            artifact: Bundle
+          - script: |
+              tree dist/
+            displayName: 'View build folder contents'
 
-  # Publish
-  - stage: Publish
-    dependsOn:
-      - Prepare_artifact
-    jobs:
       - job: publish
         steps:
-          - checkout: none
-
-          - download: current
-            artifact: Bundle
-
-          - script: |
-              ls -a
-            displayName: 'List all the files'
-
           - task: Npm@1
             inputs: 
-             command: custom
-             customCommand: publish --access public
-             customEndpoint: $(NPM_CONNECTION)
-             verbose: true
-             workingDir: '$(Pipeline.Workspace)/Bundle'
+            command: custom
+            customCommand: publish --access public
+            customEndpoint: $(NPM_CONNECTION)
+            verbose: true
+
+  # Publish
+  # - stage: Publish
+  #   dependsOn:
+  #     - Prepare_artifact
+  #   jobs:
+  #     - job: publish
+  #       steps:
+  #         - checkout: none
+
+  #         - download: current
+  #           artifact: Bundle
+
+  #         - script: |
+  #             ls -a
+  #           displayName: 'List all the files'
+
+          
