@@ -76,7 +76,7 @@ stages:
             displayName: 'Skip release bundle'
 
   # Prepare Artifact
-  - stage: Build_Publish
+  - stage: Build
     dependsOn:
       - Release
     jobs:
@@ -97,32 +97,34 @@ stages:
 
           - script: |
               tree dist/
-            displayName: 'View build folder contents'
+            displayName: 'View Contents'
 
+          - task: CopyFiles@2
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)'
+              TargetFolder: '$(System.DefaultWorkingDirectory)/bundle'
+              # The list of files to be considered is determined by the "files" entry in package.json
+            displayName: 'Copy Bundle'
+
+          - publish: $(System.DefaultWorkingDirectory)/bundle
+            artifact: Bundle
+          
+  # Publish
+  - stage: Publish
+    dependsOn:
+      - Prepare_artifact
+    jobs:
       - job: publish
-        steps:
+        steps:   
+          - checkout: none
+
+          - download: current
+            artifact: Bundle
+
           - task: Npm@1
             inputs: 
               command: custom
               customCommand: publish --access public
               customEndpoint: $(NPM_CONNECTION)
               verbose: true
-              workingDir: '$(Pipeline.Workspace)/Bundle'
-
-  # Publish
-  # - stage: Publish
-  #   dependsOn:
-  #     - Prepare_artifact
-  #   jobs:
-  #     - job: publish
-  #       steps:
-  #         - checkout: none
-
-  #         - download: current
-  #           artifact: Bundle
-
-  #         - script: |
-  #             ls -a
-  #           displayName: 'List all the files'
-
-          
+              workingDir: '$(Pipeline.Workspace)/Bundle'         
