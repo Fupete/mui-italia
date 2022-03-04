@@ -132,7 +132,11 @@ stages:
             artifact: Bundle
 
           - script: |
-              tree dist/
+              npm -version
+            displayName: 'Check NPM Version'
+
+          - script: |
+              tree .
             displayName: 'View Contents'
 
           - task: Npm@1
