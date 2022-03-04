@@ -109,7 +109,6 @@ stages:
               customCommand: publish --access public
               customEndpoint: $(NPM_CONNECTION)
               verbose: true
-              workingDir: '$(System.DefaultWorkingDirectory)'
 
           # - task: CopyFiles@2
           #   inputs:
@@ -128,29 +127,29 @@ stages:
           #   artifact: Bundle
           
   # Publish
-  - stage: Publish
-    dependsOn:
-      - Build
-    jobs:
-      - job: publish
-        steps:   
-          - checkout: none
+  # - stage: Publish
+  #   dependsOn:
+  #     - Build
+  #   jobs:
+  #     - job: publish
+  #       steps:   
+  #         - checkout: none
 
-          - download: current
-            artifact: Bundle
+  #         - download: current
+  #           artifact: Bundle
 
-          - script: |
-              npm -version
-            displayName: 'Check NPM Version'
+  #         - script: |
+  #             npm -version
+  #           displayName: 'Check NPM Version'
 
-          - script: |
-              ls -a
-            displayName: 'View Contents'
+  #         - script: |
+  #             ls -a
+  #           displayName: 'View Contents'
 
-          - task: Npm@1
-            inputs: 
-              command: custom
-              customCommand: publish --access public
-              customEndpoint: $(NPM_CONNECTION)
-              verbose: true
-              workingDir: '$(Pipeline.Workspace)/Bundle'
+  #         - task: Npm@1
+  #           inputs: 
+  #             command: custom
+  #             customCommand: publish --access public
+  #             customEndpoint: $(NPM_CONNECTION)
+  #             verbose: true
+  #             workingDir: '$(Pipeline.Workspace)/Bundle'
