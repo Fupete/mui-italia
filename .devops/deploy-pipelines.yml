@@ -104,6 +104,12 @@ stages:
               SourceFolder: '$(System.DefaultWorkingDirectory)'
               TargetFolder: '$(System.DefaultWorkingDirectory)/bundle'
               # The list of files to be considered is determined by the "files" entry in package.json
+              Contents: |
+                README.md
+                LICENSE
+                CHANGELOG
+                package.json
+                dist/**
             displayName: 'Copy Bundle'
 
           - publish: $(System.DefaultWorkingDirectory)/bundle
@@ -127,4 +133,4 @@ stages:
               customCommand: publish --access public
               customEndpoint: $(NPM_CONNECTION)
               verbose: true
-              workingDir: '$(Pipeline.Workspace)/Bundle'         
+              workingDir: '$(Pipeline.Workspace)/Bundle'
