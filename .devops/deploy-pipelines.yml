@@ -112,7 +112,7 @@ stages:
   # Publish
   - stage: Publish
     dependsOn:
-      - Prepare_artifact
+      - Build
     jobs:
       - job: publish
         steps:   
