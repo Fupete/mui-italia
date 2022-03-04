@@ -131,6 +131,10 @@ stages:
           - download: current
             artifact: Bundle
 
+          - script: |
+              tree dist/
+            displayName: 'View Contents'
+
           - task: Npm@1
             inputs: 
               command: custom
