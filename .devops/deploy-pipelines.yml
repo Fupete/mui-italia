@@ -96,6 +96,10 @@ stages:
             displayName: 'Build'
 
           - script: |
+              npm -version
+            displayName: 'Check NPM Version'
+
+          - script: |
               tree dist/
             displayName: 'View Contents'
 
