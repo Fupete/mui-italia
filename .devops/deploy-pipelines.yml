@@ -136,7 +136,7 @@ stages:
             displayName: 'Check NPM Version'
 
           - script: |
-              tree .
+              ls -a
             displayName: 'View Contents'
 
           - task: Npm@1
